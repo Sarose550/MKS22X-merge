@@ -1,7 +1,23 @@
-
 import java.util.*;
 
 public class Merge{
+
+    public static void main(String[] args){
+        int size = 10000;
+        int[] stuff = new int[size];
+        for(int i = 0; i < size; i++){
+            stuff[i] = (int)(100 * Math.random());
+        }
+        for(int x = 0; x < size; x++){
+            System.out.print(stuff[x] + " ");
+        }
+        System.out.println();
+        mergesort(stuff);
+        for(int y = 0; y < size; y++){
+            System.out.print(stuff[y] + " ");
+        }
+    }
+
     public static void insertionSort(int[] ary, int lo, int hi){ 
         for (int i = lo; i < hi; i++){ 
             int cur = ary[i]; 
@@ -13,10 +29,6 @@ public class Merge{
             ary[j + 1] = cur; 
         }
     } 
-
-    // Places the elements of the given data into sorted order
-    // using the merge sort algorithm.
-    // post: data is in sorted (nondecreasing) order
     public static void mergesort(int[] data) {
     	if(data.length <= 20){
     		insertionSort(data, 0, data.length);
@@ -27,8 +39,8 @@ public class Merge{
             int[] right = rightHalf(data);
             
             // recursively sort the two halves
-            mergeSort(left);
-            mergeSort(right);
+            mergesort(left);
+            mergesort(right);
             
             // merge the sorted halves into a sorted whole
             merge(data, left, right);
